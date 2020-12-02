@@ -17,6 +17,7 @@ import { store, persistor } from './store'
 import HomeScreen from './home/HomeScreen'
 import AccountScreen from './account/AccountScreen';
 import OrderScreen from './order/OrderScreen'
+import ProductDetailScreen from './home/ProductDetailScreen'
  
 const Stack = createStackNavigator();
 
@@ -26,7 +27,8 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Home" component={ HomeScreen } />
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
           <Stack.Screen name="Account" component={AccountScreen} />
           <Stack.Screen name='Order' component={OrderScreen} />
         </Stack.Navigator>
