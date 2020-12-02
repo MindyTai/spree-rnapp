@@ -1,3 +1,6 @@
+import AsyncStorage from '@react-native-community/async-storage';
+import { persistReducer } from 'redux-persist';
+
 const PREFIX = 'ACCOUNT.';
 
 const LOGIN_REQUEST = `${PREFIX}_LOGIN_REQUEST`;
@@ -29,7 +32,7 @@ export const logoutRequest = () => {
   }
 }
 
-export const accountReducer = (state=initialState, action) => {
+const account = (state=initialState, action) => {
   switch(action.type) {
     case LOGIN_REQUEST:
       return {
@@ -51,3 +54,11 @@ export const accountReducer = (state=initialState, action) => {
       return state
   }
 }
+
+export const accountReducer = persistReducer(
+  {
+    key: 'account',
+    storage: AsyncStorage,
+  },
+  account
+);
