@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Text, View, StyleSheet, Button, TextInput, SafeAreaView, TouchableOpacity } from 'react-native'
+import { Text, View, StyleSheet, Button, TextInput, SafeAreaView, TouchableOpacity, Alert } from 'react-native'
 
 import { fetchAccessToken } from './fetchToken'
 import { loginRequest } from './redux'
@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
 })
 
 const AccountScreen = ({ navigation }) => {
-  const [userName, onChangeUserNameText] = useState('spree@example.com');
-  const [password, onChangePasswordText] = useState('spree123');
+  const [userName, onChangeUserNameText] = useState('');
+  const [password, onChangePasswordText] = useState('');
 
   const dispatch = useDispatch()
 
@@ -50,6 +50,8 @@ const AccountScreen = ({ navigation }) => {
       dispatch(loginRequest())
       dispatch(fetchAccessToken())
       navigation.navigate('Order')
+    } else {
+      Alert.alert('Wrong username or password.')
     }
   }
 
