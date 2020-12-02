@@ -1,32 +1,42 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Text, View, StyleSheet, Button, TextInput } from 'react-native'
+import { useDispatch } from 'react-redux'
+import { Text, View, StyleSheet, Button, TextInput, SafeAreaView, TouchableOpacity } from 'react-native'
 
 import { fetchAccessToken } from './fetchToken'
 import { loginRequest } from './redux'
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
+    flex: 1,
+    backgroundColor: '#dae4e9',
     justifyContent: "center",
-    alignItems: "center",
-    padding: 40,
   },
   input: {
-    display: "flex",
-    flexDirection: "row",
-    marginBottom: 20
+    marginHorizontal: 20,
   },
   textInput: {
-    height: 30, 
+    height: 50, 
     borderColor: 'gray', 
     borderWidth: 1,
-    flex: 1,
-    marginLeft: 10,
     backgroundColor: 'white',
     borderRadius: 3,
     padding: 2
   },
+  title: {
+    lineHeight: 50,
+    fontWeight: 'bold',
+    marginRight: 10
+  },
+  logIn: {
+    backgroundColor: '#093a3e',
+    borderRadius: 3,
+    marginTop: 10,
+    padding: 10,
+  },
+  loginText: {
+    textAlign: 'center', 
+    color: 'white'
+  }
 })
 
 const AccountScreen = ({ navigation }) => {
@@ -44,9 +54,9 @@ const AccountScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.input}>
-        <Text>Account</Text>
+        <Text style={styles.title}>Account</Text>
         <TextInput
           style={styles.textInput}
           onChangeText={text => onChangeUserNameText(text)}
@@ -56,7 +66,7 @@ const AccountScreen = ({ navigation }) => {
         ></TextInput>
       </View>
       <View style={styles.input}>
-        <Text>Password</Text>
+        <Text style={styles.title}>Password</Text>
         <TextInput
           style={styles.textInput}
           onChangeText={password => onChangePasswordText(password)}
@@ -64,13 +74,15 @@ const AccountScreen = ({ navigation }) => {
           clearTextOnFocus={true}
           secureTextEntry={true}
           placeholder={'Password'}
-        ></TextInput>
+        />
+         <TouchableOpacity
+            onPress={checkLogIn}
+            style={styles.logIn}
+          >
+            <Text style={styles.loginText}>Submit</Text>
+          </TouchableOpacity>
       </View>
-      <Button 
-        title='Submit'
-        onPress={checkLogIn}>
-      </Button>
-    </View>
+    </SafeAreaView>
   )
 }
 
