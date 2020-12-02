@@ -21,11 +21,25 @@ const ProductScreen = ({ navigation }) => {
 
   const styles = StyleSheet.create({
     container: {
+      backgroundColor: '#dae4e9',
     },
     product: {
-      borderBottomWidth: 1,
-      borderColor: 'black',
-      padding: 20
+      margin:  20,
+      height: '100%'
+    },
+    card: {
+      backgroundColor: 'white',
+      borderRadius:3,
+      padding: 20,
+      marginBottom: 20,
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
     }
   })
   
@@ -34,7 +48,7 @@ const ProductScreen = ({ navigation }) => {
     const { number, total } = data.attributes
   
     return (
-      <View style={styles.product}>
+      <View style={styles.card}>
         <View>
           <View>
           <Text>{ number }</Text>
@@ -46,12 +60,13 @@ const ProductScreen = ({ navigation }) => {
       </View>
     )
   }
-  
 
   return (
-    <SafeAreaView>
-      <ScrollView>
-      { orders?.map((data, idx) => <OrderItem data={data} key={idx}/>) }
+    <SafeAreaView style={{flex: 1}}>
+      <ScrollView style={styles.container}>
+        <View style={styles.product}>
+          { orders?.map((data, idx) => <OrderItem data={data} key={idx}/>) }
+        </View>
       </ScrollView>
       <Button
         title='Log Out'
