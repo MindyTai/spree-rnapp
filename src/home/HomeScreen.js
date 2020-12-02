@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, Button } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchProducts } from './fetchProducts'
@@ -31,7 +31,7 @@ const ProductItem = ({ data }) => {
   )
 }
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const products = useSelector(state => state.productsReducer.products)
   const page = useSelector(state => state.productsReducer.page)
 
@@ -43,6 +43,10 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Button
+        title='Log In'
+        onPress={()=> { navigation.navigate('Account') }}
+      />
       <ScrollView>
       { products?.map((data, idx) => <ProductItem data={data} key={idx}/>) }
       </ScrollView>

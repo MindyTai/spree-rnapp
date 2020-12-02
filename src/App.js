@@ -8,7 +8,6 @@
 
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Button } from 'react-native';
 
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
@@ -16,6 +15,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from './home/HomeScreen'
 import { store } from './store'
+import AccountScreen from './account/AccountScreen';
  
 const Stack = createStackNavigator();
 
@@ -27,15 +27,8 @@ function App() {
           <Stack.Screen 
             name="Home" 
             component={ HomeScreen }
-            options={{
-              headerRight: ()=> (
-                <Button 
-                  onPress={() => alert('This is a button!')}
-                  title="Login"
-                />
-              )
-            }} 
           />
+          <Stack.Screen name="Account" component={AccountScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

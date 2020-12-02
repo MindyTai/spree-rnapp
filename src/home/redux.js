@@ -1,10 +1,8 @@
-//action types
 export const FETCH_PRODUCTS_PENDING = 'spree/products/FETCH_PRODUCTS_PENDING';
 export const FETCH_PRODUCTS_SUCCESS = 'spree/products/FETCH_PRODUCTS_SUCCESS';
 export const FETCH_PRODUCTS_ERROR = 'spree/products/FETCH_PRODUCTS_ERROR';
 export const CHANGE_PAGE = 'spree/products/CHANGE_PAGE'
 
-//initial products data
 const initialProductsState = {
   products: [],
   pending: false,
@@ -12,7 +10,6 @@ const initialProductsState = {
   page: 0
 }
 
-//action creaters
 export const fetchProductsPending = () => {
   return {
     type: FETCH_PRODUCTS_PENDING
@@ -39,7 +36,6 @@ export const changePage = () => {
   }
 }
 
-//reducer
 export const productsReducer = (state = initialProductsState, action) => {
   switch(action.type) {
     case FETCH_PRODUCTS_PENDING: 

@@ -1,4 +1,4 @@
-import {fetchProductsPending, fetchProductsSuccess, fetchProductsError } from './reduxStore.js'
+import { fetchProductsPending, fetchProductsSuccess, fetchProductsError } from './redux'
 import { client } from '../api'
 
 export const fetchProducts = (page) => {
