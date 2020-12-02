@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { View, Button, SafeAreaView, ScrollView, StyleSheet, Text } from 'react-native'
+import { View, TouchableOpacity, SafeAreaView, ScrollView, StyleSheet, Text } from 'react-native'
 
 import { logoutRequest } from '../account/redux'
 import { fetchOrders } from './fetchOrders'
@@ -40,6 +40,16 @@ const ProductScreen = ({ navigation }) => {
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
       elevation: 5,
+    },
+    logOut: {
+      backgroundColor: '#093a3e',
+      borderRadius: 3,
+      marginTop: 10,
+      padding: 10,
+    },
+    logOutText: {
+      textAlign: 'center', 
+      color: 'white'
     }
   })
   
@@ -66,12 +76,14 @@ const ProductScreen = ({ navigation }) => {
       <ScrollView style={styles.container}>
         <View style={styles.product}>
           { orders?.map((data, idx) => <OrderItem data={data} key={idx}/>) }
+          <TouchableOpacity
+            onPress={handleLogOut}
+            style={styles.logOut}
+          >
+            <Text style={styles.logOutText}>Log Out</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
-      <Button
-        title='Log Out'
-        onPress={handleLogOut}
-      />
     </SafeAreaView>
   )
 }
