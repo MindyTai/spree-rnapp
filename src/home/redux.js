@@ -7,7 +7,6 @@ const initialProductsState = {
   products: [],
   pending: false,
   error: null,
-  page: 0
 }
 
 export const fetchProductsPending = () => {
@@ -30,12 +29,6 @@ export const fetchProductsError = (error) => {
   }
 }
 
-export const changePage = () => {
-  return {
-    type: CHANGE_PAGE,
-  }
-}
-
 export const productsReducer = (state = initialProductsState, action) => {
   switch(action.type) {
     case FETCH_PRODUCTS_PENDING: 
@@ -54,11 +47,6 @@ export const productsReducer = (state = initialProductsState, action) => {
         ...state,
         pending: false,
         error: action.error
-      }
-    case CHANGE_PAGE: 
-      return {
-        ...state,
-        page: state.page + 1
       }
     default: 
       return state

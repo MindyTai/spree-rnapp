@@ -4,10 +4,7 @@ import { client } from '../api'
 export const fetchProducts = (page) => {
   return async (dispatch) => {
     dispatch(fetchProductsPending())
-    const res = await client.products.list({
-      include: 'default_variant',
-      page: page || 1
-    })
+    const res = await client.products.list()
 
     if(res.isSuccess()){
       const products = res.success().data
