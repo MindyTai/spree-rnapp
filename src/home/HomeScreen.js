@@ -49,10 +49,6 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView>
-      <Button
-        title='Log In'
-        onPress={()=> { navigation.navigate('Account') }}
-      />
       <ScrollView style={styles.container}>
         <View style={styles.product}>
           { products?.map((data, idx) => 

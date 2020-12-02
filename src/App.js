@@ -8,6 +8,7 @@
 
 import React from 'react';
 import { Provider } from 'react-redux';
+import { Button } from 'react-native';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -27,7 +28,18 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen 
+            name="Home" 
+            component={HomeScreen}  
+            options={({ navigation }) => ({
+              title: 'Home',
+              headerRight: () => (
+                <Button 
+                  title='Log In'
+                  onPress={() => navigation.navigate('Account')} />
+              ),
+            })}
+          />
           <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
           <Stack.Screen name="Account" component={AccountScreen} />
           <Stack.Screen name='Order' component={OrderScreen} />
